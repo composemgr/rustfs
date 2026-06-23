@@ -19,6 +19,12 @@ services:
       TZ: ${TZ:-America/New_York}
       CONTAINER_NAME: rustfs-app
       HOSTNAME: ${BASE_HOST_NAME:-$HOSTNAME}
+      RUSTFS_BROWSER: on
+      RUSTFS_REGION: us-east-1
+      RUSTFS_BROWSER_SESSION_DURATION: 30d
+      RUSTFS_ROOT_USER: ${APP_ADMIN_USER:-administrator}
+      RUSTFS_ROOT_PASSWORD: ${APP_ADMIN_PASS:-changeme_admin_password}
+      RUSTFS_BROWSER_REDIRECT_URL: https://console.${BASE_DOMAIN_NAME:-example.com}
     ports:
       - '172.17.0.1:53090:9000'
       - '172.17.0.1:53091:9001'
