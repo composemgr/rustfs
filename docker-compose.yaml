@@ -1,0 +1,35 @@
+# nginx proxy address - http://172.17.0.1:53090
+
+name: rustfs
+x-logging: &default-logging
+  options:
+    max-size: '5m'
+    max-file: '1'
+  driver: json-file
+
+services:
+  app:
+    image: casjaysdevdocker/rustfs:latest
+    container_name: rustfs-server
+    hostname: ${BASE_HOST_NAME:-$HOSTNAME}
+    restart: always
+    pull_policy: always
+    logging: *default-logging
+    environment:
+      TZ: ${TZ:-America/New_York}
+      CONTAINER_NAME: rustfs-app
+      HOSTNAME: ${BASE_HOST_NAME:-$HOSTNAME}
+    ports:
+      - '172.17.0.1:53090:9000'
+      - '172.17.0.1:53091:9001'
+    volumes:
+      - './volumes/data:/data:z'
+      - './volumes/config:/config:z'
+    networks:
+      - rustfs
+
+networks:
+  rustfs:
+    name: rustfs
+    external: false
+
