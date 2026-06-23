@@ -249,3 +249,6 @@ default.env
 # Ignore compose.yaml
 compose.yaml
 
+# Exclude the volumes dir
+volumes
+
