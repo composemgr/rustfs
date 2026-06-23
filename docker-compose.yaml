@@ -23,8 +23,8 @@ services:
       - '172.17.0.1:53090:9000'
       - '172.17.0.1:53091:9001'
     volumes:
-      - './volumes/data:/data:z'
-      - './volumes/config:/config:z'
+      - './volumes/data/rustfs:/data:z'
+      - './volumes/config/rustfs:/config:z'
     networks:
       - rustfs
 
