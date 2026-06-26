@@ -25,6 +25,8 @@ services:
       RUSTFS_ROOT_USER: ${APP_ADMIN_USER:-administrator}
       RUSTFS_ROOT_PASSWORD: ${APP_ADMIN_PASS:-changeme_admin_password}
       RUSTFS_BROWSER_REDIRECT_URL: https://console.${BASE_DOMAIN_NAME:-example.com}
+      RUSTFS_ACCESS_KEY: "${APP_ADMIN_USER:-administrator}"
+      RUSTFS_SECRET_KEY: "${APP_ADMIN_PASS:-changeme_admin_password}"
     ports:
       - '172.17.0.1:53090:9000'
       - '172.17.0.1:53091:9001'
